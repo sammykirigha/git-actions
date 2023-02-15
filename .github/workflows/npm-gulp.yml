@@ -3,9 +3,6 @@ name: NodeJS with Gulp
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
 jobs:
   build:
     runs-on: self-hosted
@@ -22,9 +19,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm install
-        npm run build --f present
-        npm test
-        gulp
+    - run: npm i
+    - run: npm run build --f present
+    - run: npm test
